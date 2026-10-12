@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Access Terminal</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0d1117;
+      color: #00ff66;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #00ff66;
+      border-radius: 12px;
+      padding: 24px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+      text-align: center;
+    }
+    .terminal-text {
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      height: 120px;
+      overflow: hidden;
+    }
+    .btn {
+      background: #00ff66;
+      color: #0d1117;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+      display: none;
+    }
+    .btn:active { transform: scale(0.98); }
+    .result-box {
+      display: none;
+      margin-top: 20px;
+      border-top: 1px dashed #00ff66;
+      padding-top: 15px;
+    }
+    .progress-bar {
+      width: 100%;
+      background: #21262d;
+      height: 10px;
+      border-radius: 5px;
+      margin: 15px 0;
+      overflow: hidden;
+      display: none;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #00ff66;
+      transition: width 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="terminal-text" id="terminal"></div>
+    
+    <button class="btn" id="actionBtn" onclick="runAnalysis()">Run Intelligence Scan</button>
+    
+    <div class="progress-bar" id="progressBox">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="result-box" id="result">
+      <h3 style="color: #ffffff; margin-bottom: 10px;">SYSTEM ANALYSIS COMPLETE</h3>
+      <p style="color: #8b949e; font-size: 14px; line-height: 1.5;">
+        <strong>Subject Name:</strong> [tasnim]<br>
+        <strong>Status:</strong> Certified Cool & Intelligent Cousin 😎<br><br>
+        <em>"Hope this custom code impressed you! Built specifically using Web APIs & JavaScript."</em>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "> Connecting to secure server...",
+      "> Verifying credentials...",
+      "> User detected: VIP Cousin",
+      "> Security bypass successful!",
+      "> Click below to execute system scan..."
+    ];
+
+    let lineIndex = 0;
+    const terminal = document.getElementById("terminal");
+    const btn = document.getElementById("actionBtn");
+
+    function typeTerminal() {
+      if (lineIndex < lines.length) {
+        terminal.innerHTML += lines[lineIndex] + "<br>";
+        lineIndex++;
+        setTimeout(typeTerminal, 700);
+      } else {
+        btn.style.display = "block";
+      }
+    }
+
+    typeTerminal();
+
+    function runAnalysis() {
+      btn.style.display = "none";
+      document.getElementById("progressBox").style.display = "block";
+      
+      // Phone vibration if supported
+      if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100, 50, 200]);
+      }
+
+      setTimeout(() => {
+        document.getElementById("progressFill").style.width = "100%";
+      }, 100);
+
+      setTimeout(() => {
+        document.getElementById("progressBox").style.display = "none";
+        document.getElementById("result").style.display = "block";
+      }, 2200);
+    }
+  </script>
+</body>
+</html>
